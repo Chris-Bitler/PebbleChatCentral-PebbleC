@@ -1,0 +1,23 @@
+{
+    "appKeys": {
+        "message": 1,
+        "status": 0
+    },
+    "capabilities": [
+        ""
+    ],
+    "companyName": "crb2547@rit.edu",
+    "enableMultiJS": false,
+    "longName": "AppM",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "AppM",
+    "uuid": "22a0388d-94dc-4b47-a5d2-32121c87afa4",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
