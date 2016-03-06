@@ -8,13 +8,18 @@
     ],
     "companyName": "crb2547@rit.edu",
     "enableMultiJS": false,
-    "longName": "AppM",
+    "longName": "PebbleChatCentral",
     "projectType": "native",
     "resources": {
         "media": []
     },
     "sdkVersion": "3",
-    "shortName": "AppM",
+    "shortName": "PebbleChatCentral",
+    "targetPlatforms": [
+        "aplite",
+        "basalt",
+        "chalk"
+    ],
     "uuid": "22a0388d-94dc-4b47-a5d2-32121c87afa4",
     "versionLabel": "1.0",
     "watchapp": {
