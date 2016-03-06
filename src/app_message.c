@@ -2,7 +2,7 @@
 
 Window *window;	
 static TextLayer *title_text_layer;
-static char final[300];
+static char final[500];
 // Key values for AppMessage Dictionary
 enum {
 	CHANNEL = 0,	
@@ -20,7 +20,7 @@ static void in_received_handler(DictionaryIterator *received, void *context) {
 	c_tuple = dict_find(received, CHANNEL);
   char channel[32];
   char sender[32];
-  char message[200];
+  char message[400];
 	if(c_tuple) {
 		APP_LOG(APP_LOG_LEVEL_DEBUG, "Received Channel: %s", c_tuple->value->cstring); 
     memcpy(channel, c_tuple->value->cstring, c_tuple->length); 
@@ -44,13 +44,17 @@ static void in_received_handler(DictionaryIterator *received, void *context) {
   APP_LOG(APP_LOG_LEVEL_DEBUG, "Debug: %s",message);
   final[0] = '\0';
   strcpy(final, channel);
-  strcat(final, ": ");
+  strcat(final, ": \n\n");
   strcat(final, sender);
   strcat(final,": ");
   strcat(final,message);
   APP_LOG(APP_LOG_LEVEL_DEBUG, "Debug: %s",final);
   text_layer_set_text(title_text_layer, final);
   layer_mark_dirty(window_get_root_layer(window));
+  if(dict_find(received, 3) != NULL) {
+    vibes_double_pulse();
+    vibes_double_pulse();
+  }
   APP_LOG(APP_LOG_LEVEL_DEBUG, "%s", text_layer_get_text(title_text_layer));
 }
 
@@ -73,6 +77,7 @@ static void main_window_load(Window *window) {
   // Create and Add to layer hierarchy:
   title_text_layer = text_layer_create(GRect(5, 5, bounds.size.w, bounds.size.h));
   text_layer_set_overflow_mode(title_text_layer, GTextOverflowModeWordWrap);
+  text_layer_set_font(title_text_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
   text_layer_set_text(title_text_layer, "This is TextLayer");
   layer_add_child(window_layer, text_layer_get_layer(title_text_layer));
 }
